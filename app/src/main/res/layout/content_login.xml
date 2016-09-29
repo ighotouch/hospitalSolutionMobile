@@ -12,12 +12,19 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.eleaning.elearningaz.LoginActivity"
     tools:showIn="@layout/activity_login">
-
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/splashLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:transitionName="robot"
+        android:src="@drawable/logo"/>
     <LinearLayout
+        android:layout_below="@+id/splashLogo"
         android:id="@+id/usernameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:layout_marginTop="38dp"
         android:orientation="horizontal">
@@ -59,7 +66,7 @@
         android:background="#e2e2e2"
         android:layout_height="48dp">
         <ImageView
-            android:src="@drawable/ic_username"
+            android:src="@drawable/ic_password"
             android:layout_width="wrap_content"
             android:layout_height="32dp" />
     </LinearLayout>
