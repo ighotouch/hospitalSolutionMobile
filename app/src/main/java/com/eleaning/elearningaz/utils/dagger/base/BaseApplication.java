@@ -5,6 +5,8 @@ import android.app.Application;
 import com.eleaning.elearningaz.utils.dagger.component.BaseAppComponent;
 import com.eleaning.elearningaz.utils.dagger.component.DaggerBaseAppComponent;
 import com.eleaning.elearningaz.utils.dagger.module.BaseAppModule;
+import com.eleaning.elearningaz.utils.dagger.module.NetModule;
+import com.eleaning.elearningaz.utils.rest.RestConstants;
 
 
 public class BaseApplication extends Application {
@@ -22,8 +24,6 @@ public class BaseApplication extends Application {
         component = DaggerComponentInitializer.init(this);
     }
 
-
-
     public static BaseAppComponent getComponent() {
         return component;
     }
@@ -35,6 +35,7 @@ public class BaseApplication extends Application {
         public static BaseAppComponent init(BaseApplication app) {
             return DaggerBaseAppComponent.builder()
                     .baseAppModule(new BaseAppModule(app))
+                    .netModule(new NetModule(RestConstants.BASE_URL))
                     .build();
         }
     }

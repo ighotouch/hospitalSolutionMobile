@@ -27,6 +27,12 @@ public class BaseAppModule {
 
     @Provides
     @Singleton
+    Application provideApplication() {
+        return application;
+    }
+
+    @Provides
+    @Singleton
     Resources provideResources(){
         return application.getResources();
     }
