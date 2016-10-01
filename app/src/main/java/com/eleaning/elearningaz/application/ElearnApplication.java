@@ -15,7 +15,7 @@ public class ElearnApplication extends BaseApplication {
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
                         .build());
 
         //initialiase Fresco
