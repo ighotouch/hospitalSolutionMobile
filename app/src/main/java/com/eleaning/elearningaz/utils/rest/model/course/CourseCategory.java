@@ -5,4 +5,18 @@ package com.eleaning.elearningaz.utils.rest.model.course;
  */
 
 public class CourseCategory {
+    String title;
+
+
+    public CourseCategory(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

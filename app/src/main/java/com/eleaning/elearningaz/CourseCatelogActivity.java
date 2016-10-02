@@ -1,8 +1,10 @@
 package com.eleaning.elearningaz;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,10 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.eleaning.elearningaz.utils.rest.model.course.CourseCategory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
 public class CourseCatelogActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView categoryRecycleView;
-
+    @Inject
+    Context appContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +48,26 @@ public class CourseCatelogActivity extends AppCompatActivity
         categoryRecycleView = (RecyclerView) findViewById(R.id.category_recycler_view);
 
         //https://github.com/daimajia/AndroidImageSlider
+    }
+
+    private void prepareActivity(){
+
+        List<CourseCategory> categoryList = new ArrayList<>();
+
+        //Test mock
+        CourseCategory courseCategory = new CourseCategory("Customer Service");
+        categoryList.add(courseCategory);
+
+
+
+        if(categoryList != null && categoryList.size() > 0){
+            categoryRecycleView.setLayoutManager(new LinearLayoutManager(appContext));
+
+            adapter = new CategoryListAdapter(categoryList);
+            categoryRecycleView.setAdapter(adapter);
+            categoryRecycleView.setNestedScrollingEnabled(true);
+        }
+
     }
 
     @Override
