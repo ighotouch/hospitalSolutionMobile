@@ -1,0 +1,9 @@
+Category title
+Courses{
+	Course title
+	Thumbnail
+	Description
+	Created_at
+	Updated_at
+	Deleted_at
+	}
