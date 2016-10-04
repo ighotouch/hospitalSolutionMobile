@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.eleaning.elearningaz.R;
 import com.eleaning.elearningaz.application.ElearnApplication;
+import com.eleaning.elearningaz.utils.rest.model.course.Course;
 import com.eleaning.elearningaz.utils.rest.model.course.CourseCategory;
 
 
@@ -59,6 +60,31 @@ public class CategotyListAdapter extends RecyclerView.Adapter<CategotyListAdapte
 
         viewHolder.title.setText(courseCategory.getTitle());
 
+        List<Course> courses = new ArrayList<>();
+        courses.add(new Course("Effective Coummunication","Effective Communication","null"));
+        courses.add(new Course("Customer Care","Effective Communication","null"));
+        courses.add(new Course("Service","Effective Communication","null"));
+        courses.add(new Course("Help Centers","Effective Communication","null"));
+        courses.add(new Course("Customers","Effective Communication","null"));
+        courses.add(new Course("Customer Care","Effective Communication","null"));
+
+
+
+
+        if (courses != null && courses.size() > 0) {
+
+            CourseListRecycleViewAdapter contentHorizontalRecycleView = new CourseListRecycleViewAdapter(courses);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(appContext,LinearLayoutManager.HORIZONTAL,false);
+            viewHolder.category_content_recycler_view.setLayoutManager(linearLayoutManager);
+            viewHolder.category_content_recycler_view.setAdapter(contentHorizontalRecycleView);
+            viewHolder.category_content_recycler_view.setItemAnimator(new DefaultItemAnimator());
+
+        } else {
+            viewHolder.progressBar.setVisibility(View.GONE);
+            //requestMaker.makeContentListCall(responseInterface, module.getCourseId(), module.getModuleId());
+        }
+
 
 
     }
@@ -71,14 +97,14 @@ public class CategotyListAdapter extends RecyclerView.Adapter<CategotyListAdapte
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView title;
-        public RecyclerView module_content_recycler_view;
+        public RecyclerView category_content_recycler_view;
         public ProgressBar progressBar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             title = (TextView) itemView.findViewById(R.id.title);
-            module_content_recycler_view = (RecyclerView) itemView.findViewById(R.id.module_content_recycler_view);
+            category_content_recycler_view = (RecyclerView) itemView.findViewById(R.id.category_content_recycler_view);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
 
         }

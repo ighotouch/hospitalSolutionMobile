@@ -9,6 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/page_bk"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.eleaning.elearningaz.LoginActivity"
     tools:showIn="@layout/activity_login">
@@ -31,7 +32,7 @@
         <LinearLayout
             android:layout_width="48dp"
             android:gravity="center"
-            android:background="#e2e2e2"
+            android:background="#38e2e2e2"
             android:layout_height="48dp">
             <ImageView
                 android:src="@drawable/ic_username"
@@ -63,7 +64,7 @@
     <LinearLayout
         android:layout_width="48dp"
         android:gravity="center"
-        android:background="#e2e2e2"
+        android:background="#39e2e2e2"
         android:layout_height="48dp">
         <ImageView
             android:src="@drawable/ic_password"

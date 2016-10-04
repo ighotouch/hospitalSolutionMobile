@@ -4,6 +4,7 @@ package com.eleaning.elearningaz.application;
 import com.eleaning.elearningaz.utils.dagger.base.BaseApplication;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 public class ElearnApplication extends BaseApplication {
 

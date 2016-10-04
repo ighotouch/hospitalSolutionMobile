@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.eleaning.elearningaz.adapters.CategotyListAdapter;
 import com.eleaning.elearningaz.utils.rest.model.course.CourseCategory;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class CourseCatelogActivity extends AppCompatActivity
     RecyclerView categoryRecycleView;
     @Inject
     Context appContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,24 +48,26 @@ public class CourseCatelogActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         categoryRecycleView = (RecyclerView) findViewById(R.id.category_recycler_view);
-
+        prepareActivity();
         //https://github.com/daimajia/AndroidImageSlider
     }
 
-    private void prepareActivity(){
+    private void prepareActivity() {
 
         List<CourseCategory> categoryList = new ArrayList<>();
 
         //Test mock
-        CourseCategory courseCategory = new CourseCategory("Customer Service");
-        categoryList.add(courseCategory);
+        CourseCategory courseCategory1 = new CourseCategory("Customer Service");
+        CourseCategory courseCategory2 = new CourseCategory("Web Development");
+        categoryList.add(courseCategory1);
+        categoryList.add(courseCategory2);
 
 
-
-        if(categoryList != null && categoryList.size() > 0){
+        //hide first progress bar
+        if (categoryList != null && categoryList.size() > 0) {
             categoryRecycleView.setLayoutManager(new LinearLayoutManager(appContext));
 
-            adapter = new CategoryListAdapter(categoryList);
+            CategotyListAdapter adapter = new CategotyListAdapter(categoryList);
             categoryRecycleView.setAdapter(adapter);
             categoryRecycleView.setNestedScrollingEnabled(true);
         }
@@ -107,16 +111,7 @@ public class CourseCatelogActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+        if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 

@@ -9,6 +9,7 @@ import com.eleaning.elearningaz.MainActivity;
 import com.eleaning.elearningaz.adapters.CategotyListAdapter;
 import com.eleaning.elearningaz.utils.dagger.module.BaseAppModule;
 import com.eleaning.elearningaz.utils.dagger.module.NetModule;
+import com.eleaning.elearningaz.adapters.CourseListRecycleViewAdapter;
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;
@@ -23,6 +24,7 @@ public interface BaseAppComponent {
 
     void inject(MainActivity mainActivity);
     void inject(CategotyListAdapter categotyListAdapter);
+    void inject(CourseListRecycleViewAdapter courseListRecycleViewAdapter);
 
     Context getContext();
 

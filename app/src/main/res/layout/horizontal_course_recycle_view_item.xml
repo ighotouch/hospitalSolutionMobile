@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="230dp"
+    android:id="@+id/courseCard"
+    android:layout_margin="3dp"
+    card_view:cardBackgroundColor="#FFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="285dp"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <LinearLayout
+            android:id="@+id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.eleaning.elearningaz.utils.utils.TranslateDraweeView
+                android:id="@+id/avatar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:transitionName="robot"
+
+                android:layout_gravity="center_horizontal"
+                fresco:placeholderImage="@drawable/s_css" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/horizontal_content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/colorPrimary"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="Content title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/horizontal_content_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Bob Andrew"
+                android:textColor="#9b9b9b" />
+
+            <TextView
+                android:id="@+id/horizontal_course_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
