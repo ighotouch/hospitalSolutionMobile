@@ -68,7 +68,7 @@ public class CourseListRecycleViewAdapter extends RecyclerView.Adapter<RecyclerV
 
             }
         });
-        //courseViewHolder.avatar.setImageURI();
+        courseViewHolder.avatar.setImageURI(content.getThumbnail());
 
 
     }

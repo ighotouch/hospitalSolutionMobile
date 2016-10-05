@@ -61,12 +61,12 @@ public class CategotyListAdapter extends RecyclerView.Adapter<CategotyListAdapte
         viewHolder.title.setText(courseCategory.getTitle());
 
         List<Course> courses = new ArrayList<>();
-        courses.add(new Course("Effective Coummunication","Effective Communication","null"));
-        courses.add(new Course("Customer Care","Effective Communication","null"));
-        courses.add(new Course("Service","Effective Communication","null"));
-        courses.add(new Course("Help Centers","Effective Communication","null"));
-        courses.add(new Course("Customers","Effective Communication","null"));
-        courses.add(new Course("Customer Care","Effective Communication","null"));
+        courses.add(new Course("Sale","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/sale.jpg"));
+        courses.add(new Course("Customer Care","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/cus.jpg"));
+        courses.add(new Course("Service","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/Finance (1)crop.jpg"));
+        courses.add(new Course("Project Management","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/project_management-100536264-cropidge.jpg"));
+        courses.add(new Course("General Profession","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/banner one.png"));
+        courses.add(new Course("Leadership","Effective Communication","https://academy.elearninga-z.com/lms/www/market/category/leader.jpg"));
 
 
 
