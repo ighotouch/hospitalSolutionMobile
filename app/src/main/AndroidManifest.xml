@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.eleaning.elearningaz">
+    package="com.adroits.smartmedcare">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".application.ElearnApplication"
+        android:name="com.adroits.smartmedcare.application.ElearnApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.adroits.smartmedcare.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.adroits.smartmedcare.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,35 +23,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CourseCatelogActivity"
+            android:name="com.adroits.smartmedcare.CourseCatelogActivity"
             android:label="@string/title_activity_course_catelog"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.adroits.smartmedcare.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.adroits.smartmedcare.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.eleaning.elearningaz.MainActivity" />
+                android:value="com.adroits.smartmedcare.MainActivity" />
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name="com.adroits.smartmedcare.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.adroits.smartmedcare.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.eleaning.elearningaz.MainActivity" />
+                android:value="com.adroits.smartmedcare.MainActivity" />
         </activity>
         <activity
-            android:name=".CourseActivity"
+            android:name="com.adroits.smartmedcare.CourseActivity"
             android:label="@string/title_activity_course"
-            android:parentActivityName=".CourseCatelogActivity"
+            android:parentActivityName="com.adroits.smartmedcare.CourseCatelogActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.eleaning.elearningaz.CourseCatelogActivity" />
+                android:value="com.adroits.smartmedcare.CourseCatelogActivity" />
         </activity>
         <provider android:authorities="com.facebook.app.FacebookContentProvider1234"
             android:name="com.facebook.FacebookContentProvider"

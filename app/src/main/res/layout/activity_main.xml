@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.eleaning.elearningaz.MainActivity">
+    android:background="@drawable/page_bk"
+    tools:context="com.adroits.smartmedcare.MainActivity">
 
     <ImageView
         android:layout_marginTop="20dp"
