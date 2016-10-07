@@ -34,6 +34,8 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.2'
     provided 'javax.annotation:jsr250-api:1.0'
 
+    compile 'com.google.android.gms:play-services:9.6.1'
+
     // retrofit, gson
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
