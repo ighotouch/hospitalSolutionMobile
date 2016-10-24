@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
 
                         public void run() {
                             /* Create an Intent that will start the Menu-Activity. */
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SplashActivity.this, ConsoleActivity.class);
                             // create the transition animation - the images in the layouts
                             // of both activities are defined with android:transitionName="robot"
                             ActivityOptions options = null;

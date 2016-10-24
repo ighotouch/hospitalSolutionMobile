@@ -27,6 +27,10 @@ private String address;
 public Lga() {
 }
 
+    public Lga(String title) {
+        this.title = title;
+    }
+
 /**
 * 
 * @param title

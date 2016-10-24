@@ -33,6 +33,9 @@ private Lga lga;
 public Facility() {
 }
 
+
+
+
 /**
 * 
 * @param facilityType

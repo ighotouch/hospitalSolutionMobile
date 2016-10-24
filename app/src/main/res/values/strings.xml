@@ -10,4 +10,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_course">CourseActivity</string>
+    <string name="title_activity_marital_status">MaritalStatusActivity</string>
 </resources>
