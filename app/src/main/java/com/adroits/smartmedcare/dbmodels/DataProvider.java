@@ -40,11 +40,11 @@ public class DataProvider {
         addLGA("Somolu");
         addLGA("Surulere");
 
-//        addRegistrationForm("Private Hospital");
-//        addRegistrationForm("Private Clinic");
-//        addRegistrationForm("Maternity Centre");
-//        addRegistrationForm("Private Nursing/convalescent home");
-//        addRegistrationForm("Private Physiotherapy Clinic");
+        addRegistrationForm("Private Hospital");
+        addRegistrationForm("Private Clinic");
+        addRegistrationForm("Maternity Centre");
+        addRegistrationForm("Private Nursing/convalescent home");
+        addRegistrationForm("Private Physiotherapy Clinic");
 
 
 
@@ -287,5 +287,8 @@ public class DataProvider {
     }
 
 
-
+    private static void addRegistrationForm(String formName) {
+        FacilityRegistrationForm form = new FacilityRegistrationForm(formName);
+        registrationForms.add(form.getTitle());
+    }
 }

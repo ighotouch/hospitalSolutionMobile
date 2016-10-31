@@ -100,8 +100,8 @@ public class InformationPortalListAdapter extends RecyclerView.Adapter<Informati
 
         int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 
-        Drawable res = context.getResources().getDrawable(imageResource);
-        imageView.setImageDrawable(res);
+       // Drawable res = context.getResources().getDrawable(imageResource);
+        //imageView.setImageDrawable(res);
 
 
 

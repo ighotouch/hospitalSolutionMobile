@@ -21,7 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.adroits.smartmedcare.adapters.CategotyListAdapter;
+import com.adroits.smartmedcare.dbmodels.DataProvider;
 import com.adroits.smartmedcare.utils.rest.model.course.CourseCategory;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -209,11 +211,11 @@ public class ConsoleActivity extends AppCompatActivity
 //                Intent intent = new Intent(MainActivity.this, HealthTopic.class);
 //                MainActivity.this.startActivity(intent);
 //            }
-//            if(selectedSection==7)
-//            {
-//                Intent intent = new Intent(MainActivity.this, MinistryPolice.class);
-//                MainActivity.this.startActivity(intent);
-//            }
+            if(selectedSection==7)
+            {
+                Intent intent = new Intent(ConsoleActivity.this, MinistryPolice.class);
+                ConsoleActivity.this.startActivity(intent);
+            }
 //            if(selectedSection==8)
 //            {
 //                Intent intent = new Intent(MainActivity.this, HealthAssessment.class);
@@ -305,5 +307,60 @@ public class ConsoleActivity extends AppCompatActivity
 
             }, 1);
         }
+    }
+
+    public void onMinistryPolice(View view) {
+        selectedSection=7;
+        if(!isAnimatingSlideOutPanel)
+        {
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    slideOutConsolePanel();
+                }
+
+            }, 1);
+        }
+    }
+
+    public void onInformationPortal(View view) {
+    }
+
+    public void onRegistration(View view) {
+        //
+        List<String> facilitesForm = DataProvider.registrationForms;
+        new MaterialDialog.Builder(this)
+                .title("Facility Registration")
+                .items(facilitesForm)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        selectedSection=9;
+                        if(!isAnimatingSlideOutPanel)
+                        {
+                            handler.postDelayed(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    slideOutConsolePanel();
+                                }
+
+                            }, 1);
+                        }
+
+                    }
+                })
+
+                .show();
+    }
+
+    public void onDrugVerification(View view) {
+    }
+
+    public void onHealthTopic(View view) {
+    }
+
+    public void onHealthRisk(View view) {
     }
 }
