@@ -199,11 +199,11 @@ public class ConsoleActivity extends AppCompatActivity
                 Intent intent = new Intent(ConsoleActivity.this, HospitalLocator.class);
                 ConsoleActivity.this.startActivity(intent);
             }
-//            if(selectedSection==5)
-//            {
-//                Intent intent = new Intent(MainActivity.this, MaternitySection.class);
-//                MainActivity.this.startActivity(intent);
-//            }
+            if(selectedSection==5)
+            {
+                Intent intent = new Intent(ConsoleActivity.this, MaritalStatusActivity.class);
+                ConsoleActivity.this.startActivity(intent);
+            }
 //            if(selectedSection==6)
 //            {
 //                Intent intent = new Intent(MainActivity.this, HealthTopic.class);
@@ -279,6 +279,21 @@ public class ConsoleActivity extends AppCompatActivity
 
     public void onHospitalLocator(View view) {
         selectedSection=4;
+        if(!isAnimatingSlideOutPanel)
+        {
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    slideOutConsolePanel();
+                }
+
+            }, 1);
+        }
+    }
+
+    public void onMaternity(View view) {
+        selectedSection=5;
         if(!isAnimatingSlideOutPanel)
         {
             handler.postDelayed(new Runnable() {

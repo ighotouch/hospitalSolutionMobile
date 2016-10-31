@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ElearningAZ</string>
+    <string name="app_name">Hospital</string>
     <string name="title_activity_course_catelog">Course Catelog</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

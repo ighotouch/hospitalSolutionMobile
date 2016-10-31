@@ -491,7 +491,7 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
 
             }, 1000);
 
-            Intent intent = new Intent(HospitalLocator.this, MainActivity.class);
+            Intent intent = new Intent(HospitalLocator.this, ConsoleActivity.class);
             HospitalLocator.this.startActivity(intent);
         }
 

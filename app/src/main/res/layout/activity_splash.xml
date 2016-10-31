@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         >
         <ImageView
-            android:id="@+id/headerImage"
+            android:id="@+id/splashLogo"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
