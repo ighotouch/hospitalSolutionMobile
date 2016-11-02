@@ -100,8 +100,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
         int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 
-        Drawable res = context.getResources().getDrawable(imageResource);
-        imageView.setImageDrawable(res);
+       // Drawable res = context.getResources().getDrawable(imageResource);
+        //imageView.setImageDrawable(res);
 
 
 

@@ -34,7 +34,21 @@
             android:label="@string/title_activity_course_catelog"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".InformationPortal"
+            android:label="@string/title_activity_course_catelog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PaymentActivity"
+            android:label="@string/title_activity_course_catelog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HealthAssessment"
+            android:label="@string/title_activity_course_catelog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MinistryPolice"
             android:label="@string/title_activity_course_catelog"

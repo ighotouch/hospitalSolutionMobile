@@ -1,0 +1,31 @@
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ >
+    <EditText
+         android:id="@+id/clearable_edit"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:paddingLeft="45dip"
+         android:paddingRight="35dip"
+         android:background="@android:color/transparent"
+     />
+     <ImageView
+         android:id="@+id/clearable_icon_start"
+         android:layout_width="30dip"
+         android:layout_height="30dip"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginLeft="5dp"
+     />
+     <Button
+         android:id="@+id/clearable_button_clear"
+         android:layout_width="30dip"
+         android:layout_height="30dip"
+         android:layout_alignParentRight="true"
+         android:background="@drawable/ic_action_cancel"
+         android:layout_alignParentTop="true"
+         android:layout_marginRight="5dip"
+     />
+
+</RelativeLayout>

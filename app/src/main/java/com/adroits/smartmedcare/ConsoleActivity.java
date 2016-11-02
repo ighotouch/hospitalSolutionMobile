@@ -206,26 +206,26 @@ public class ConsoleActivity extends AppCompatActivity
                 Intent intent = new Intent(ConsoleActivity.this, MaritalStatusActivity.class);
                 ConsoleActivity.this.startActivity(intent);
             }
-//            if(selectedSection==6)
-//            {
-//                Intent intent = new Intent(MainActivity.this, HealthTopic.class);
-//                MainActivity.this.startActivity(intent);
-//            }
+            if(selectedSection==6)
+            {
+                Intent intent = new Intent(ConsoleActivity.this, InformationPortal.class);
+                ConsoleActivity.this.startActivity(intent);
+            }
             if(selectedSection==7)
             {
                 Intent intent = new Intent(ConsoleActivity.this, MinistryPolice.class);
                 ConsoleActivity.this.startActivity(intent);
             }
-//            if(selectedSection==8)
-//            {
-//                Intent intent = new Intent(MainActivity.this, HealthAssessment.class);
-//                MainActivity.this.startActivity(intent);
-//            }
-//            if(selectedSection==9)
-//            {
-//                Intent intent = new Intent(MainActivity.this, PaymentActivity.class);
-//                MainActivity.this.startActivity(intent);
-//            }
+            if(selectedSection==8)
+            {
+                Intent intent = new Intent(ConsoleActivity.this, HealthAssessment.class);
+                ConsoleActivity.this.startActivity(intent);
+            }
+            if(selectedSection==9)
+            {
+                Intent intent = new Intent(ConsoleActivity.this, PaymentActivity.class);
+                ConsoleActivity.this.startActivity(intent);
+            }
 
         }
     }
@@ -325,6 +325,18 @@ public class ConsoleActivity extends AppCompatActivity
     }
 
     public void onInformationPortal(View view) {
+        selectedSection=6;
+        if(!isAnimatingSlideOutPanel)
+        {
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    slideOutConsolePanel();
+                }
+
+            }, 1);
+        }
     }
 
     public void onRegistration(View view) {
@@ -362,5 +374,17 @@ public class ConsoleActivity extends AppCompatActivity
     }
 
     public void onHealthRisk(View view) {
+        selectedSection=8;
+        if(!isAnimatingSlideOutPanel)
+        {
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    slideOutConsolePanel();
+                }
+
+            }, 1);
+        }
     }
 }
