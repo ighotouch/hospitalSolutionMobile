@@ -108,6 +108,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.adroits.smartmedcare.MainActivity" />
         </activity>
+
+        <service
+            android:name=".utils.utils.FetchAddressIntentService"
+            android:exported="false"/>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBfCdn7d1-5BnsZJY5wt1Y6yS1bkoXINn0" />
     </application>
 
 </manifest>

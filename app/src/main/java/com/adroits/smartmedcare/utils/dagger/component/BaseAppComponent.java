@@ -5,13 +5,17 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 
+import com.adroits.smartmedcare.DetailActivity;
+import com.adroits.smartmedcare.HospitalLocator;
 import com.adroits.smartmedcare.MainActivity;
+import com.adroits.smartmedcare.SplashActivity;
 import com.adroits.smartmedcare.adapters.CategotyListAdapter;
 import com.adroits.smartmedcare.utils.dagger.module.BaseAppModule;
 import com.adroits.smartmedcare.utils.dagger.module.NetModule;
 import com.adroits.smartmedcare.adapters.CourseListRecycleViewAdapter;
 import com.google.gson.Gson;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 import dagger.Component;
 import okhttp3.Cache;
@@ -23,6 +27,9 @@ import retrofit2.Retrofit;
 public interface BaseAppComponent {
 
     void inject(MainActivity mainActivity);
+    void inject(SplashActivity splashActivity);
+    void inject(HospitalLocator hospitalLocator);
+    void inject(DetailActivity detailActivity);
     void inject(CategotyListAdapter categotyListAdapter);
     void inject(CourseListRecycleViewAdapter courseListRecycleViewAdapter);
 
@@ -32,7 +39,8 @@ public interface BaseAppComponent {
 
     Resources getResources();
 
-    SharedPreferences getSharedPreferences();
+    @Named("PrefCache")
+    SharedPreferences providePrefCacheSharedPreferences();
 
     Cache getHttpCache();
 

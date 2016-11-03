@@ -26,9 +26,11 @@ import android.widget.Toast;
 
 
 import com.adroits.smartmedcare.adapters.FacilitiesListAdapter;
+import com.adroits.smartmedcare.application.ElearnApplication;
 import com.adroits.smartmedcare.dbmodels.DataProvider;
 import com.adroits.smartmedcare.dbmodels.Facilities;
 import com.adroits.smartmedcare.dbmodels.Facility;
+import com.adroits.smartmedcare.utils.SessionManager;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,16 +41,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class HospitalLocator extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    GoogleApiClient mGoogleApiClient;
+import javax.inject.Inject;
+
+public class HospitalLocator extends AppCompatActivity  {
+
     int index = 0;
-    double latitude;
-    double longitude;
+
     Facilities facilitiesClicked;
     TextView globalText;
     String globalString = "Loading location..";
     private Handler handler = new Handler();
     static String deviceLocation;
+
+    @Inject
+    SessionManager sessionManager;
 
     @Override
     public void finish() {
@@ -64,14 +70,8 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
         setContentView(R.layout.activity_hospital_locator);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-// Create an instance of GoogleAPIClient.
-        if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .build();
-        }
+        ElearnApplication.getComponent().inject(this);
+
 
 
         startIntro();
@@ -86,79 +86,7 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
 
     }
 
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
 
-                Toast.makeText(this, "Permission is granted", Toast.LENGTH_SHORT).show();
-            } else {
-
-                Toast.makeText(this, "Permission is revoked", Toast.LENGTH_SHORT).show();
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
-        } else { //permission is automatically granted on sdk<23 upon installation
-            Toast.makeText(this, "Permission is granted", Toast.LENGTH_SHORT).show();
-        }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            // Toast.makeText(this, "No permission", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient) != null) {
-            Toast.makeText(this, String.valueOf(LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient).getLatitude()), Toast.LENGTH_SHORT).show();
-            latitude = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient).getLatitude();
-
-            longitude = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient).getLongitude();
-            Geocoder geocoder;
-            List<Address> addresses;
-            geocoder = new Geocoder(this, Locale.getDefault());
-
-            try {
-                addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
-                String postalCode = addresses.get(0).getPostalCode();
-                String knownName = addresses.get(0).getFeatureName();
-                deviceLocation = country + " " + knownName + " " + state;
-                Toast.makeText(this, country + " " + knownName + " " + state, Toast.LENGTH_SHORT).show();
-                getSupportActionBar().setTitle(knownName + " " + state);
-                globalText.setText(knownName + " " + state);
-                globalString = knownName + " " + state;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-//            mLongitudeText.setText(String.valueOf(LocationServices.FusedLocationApi.getLastLocation(
-//                    mGoogleApiClient).getLongitude()));
-        }
-    }
-
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 
     public static class SectionFragment extends Fragment {
         private static final String TAG = "SectionFragment";
@@ -231,7 +159,8 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
                     View fragmentView = inflater.inflate(context.getResources().getLayout(R.layout.facility_locator), null);
                     //context.loadFacilitiesTitle(fragmentView, _backMode);
                     context.globalText = (TextView) fragmentView.findViewById(R.id.descLabel);
-                    context.globalText.setText(context.globalString);
+                    String location =  context.sessionManager.getGeoLocation();
+                    context.globalText.setText(location);
                     RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
                     final List<Facilities> facilites = new ArrayList<>();
@@ -270,7 +199,8 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
                     context.getSupportActionBar().setTitle("Facility Locator");
                     View fragmentView = inflater.inflate(context.getResources().getLayout(R.layout.facility_locator), null);
                     context.globalText = (TextView) fragmentView.findViewById(R.id.descLabel);
-                    context.globalText.setText(context.globalString);
+                    String location =  context.sessionManager.getGeoLocation();
+                    context.globalText.setText(location);
                     RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
                     final List<Facilities> facilites = new ArrayList<>();
@@ -432,8 +362,7 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
                             } else {
 
                                 Intent intent = new Intent(context, DetailActivity.class);
-                                intent.putExtra("lat", context.latitude);
-                                intent.putExtra("long", context.longitude);
+
 
                                 context.startActivity(intent);
                             }
@@ -511,15 +440,7 @@ public class HospitalLocator extends AppCompatActivity implements GoogleApiClien
         ft.replace(R.id.fragmentContainer, section).commit();
     }
 
-    protected void onStart() {
-        mGoogleApiClient.connect();
-        super.onStart();
-    }
 
-    protected void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
-    }
 
 }
 
