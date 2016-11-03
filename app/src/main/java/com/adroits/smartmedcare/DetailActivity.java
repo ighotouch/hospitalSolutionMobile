@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adroits.smartmedcare.application.ElearnApplication;
+import com.adroits.smartmedcare.dbmodels.DataProvider;
+import com.adroits.smartmedcare.dbmodels.Facility;
 import com.adroits.smartmedcare.utils.SessionManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -33,6 +35,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -48,6 +51,7 @@ public class DetailActivity extends AppCompatActivity implements
     private GoogleMap mMap;
     @Inject
     SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,12 +90,36 @@ public class DetailActivity extends AppCompatActivity implements
                 .position(selectedCoordinates));
 
 
-
         // You can customize the marker image using images bundled with
         // your app, or dynamically generated bitmaps.
         map.addMarker(new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.pham))
                 .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
                 .position(selectedCoordinates));
+        addMarkersToMap(map);
     }
+
+    private void addMarkersToMap(GoogleMap map) {
+        map.clear();
+        for (Facility facility : DataProvider.facilities) {
+            LatLng ll = new LatLng(Double.valueOf(facility.getLatitude()), Double.valueOf(facility.getLongitude()));
+            BitmapDescriptor bitmapMarker;
+            switch (facility.getFacilityType()) {
+                case "general hospital":
+                    bitmapMarker = BitmapDescriptorFactory.fromResource(R.drawable.pham);
+                    break;
+
+                default:
+                    bitmapMarker = BitmapDescriptorFactory.fromResource(R.drawable.pham);
+                    break;
+            }
+            map.addMarker(new MarkerOptions()
+                    .icon(bitmapMarker)
+                    .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                    .position(ll));
+
+        }
+    }
+
+
 }
