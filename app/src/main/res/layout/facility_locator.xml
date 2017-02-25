@@ -31,6 +31,7 @@
         android:layout_marginBottom="0dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:background="#e2e2e2"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textColor="#FF404040"
@@ -51,7 +52,7 @@
             android:id="@+id/kRepoOptionPanel"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="0dp"
             android:layout_below="@+id/descLabel"
         >
@@ -66,6 +67,8 @@
             <ImageView
                 android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
+                android:layout_gravity="bottom"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/add_one"/>

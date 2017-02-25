@@ -82,7 +82,10 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
 
                         public void run() {
                             /* Create an Intent that will start the Menu-Activity. */
+                            SplashActivity.this.finish();
                             Intent intent = new Intent(SplashActivity.this, ConsoleActivity.class);
+
+
                             // create the transition animation - the images in the layouts
                             // of both activities are defined with android:transitionName="robot"
                             ActivityOptions options = null;

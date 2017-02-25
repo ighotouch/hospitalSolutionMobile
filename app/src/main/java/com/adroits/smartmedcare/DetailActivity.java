@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -12,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,6 +59,10 @@ public class DetailActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_with_map);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Facilities");
         ElearnApplication.getComponent().inject(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -104,13 +111,24 @@ public class DetailActivity extends AppCompatActivity implements
         for (Facility facility : DataProvider.facilities) {
             LatLng ll = new LatLng(Double.valueOf(facility.getLatitude()), Double.valueOf(facility.getLongitude()));
             BitmapDescriptor bitmapMarker;
+            int height = 60;
+            int width = 60;
+            Bitmap b;
+            Bitmap smallMarker;
+            BitmapDrawable bitmapdraw;
             switch (facility.getFacilityType()) {
                 case "general hospital":
-                    bitmapMarker = BitmapDescriptorFactory.fromResource(R.drawable.pham);
+                    bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.general_hospital);
+                    b = bitmapdraw.getBitmap();
+                    smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+                    bitmapMarker = BitmapDescriptorFactory.fromBitmap(smallMarker);
                     break;
 
                 default:
-                    bitmapMarker = BitmapDescriptorFactory.fromResource(R.drawable.pham);
+                    bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.pham);
+                    b = bitmapdraw.getBitmap();
+                    smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+                    bitmapMarker = BitmapDescriptorFactory.fromBitmap(smallMarker);
                     break;
             }
             map.addMarker(new MarkerOptions()

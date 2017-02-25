@@ -1,6 +1,9 @@
 package com.adroits.smartmedcare.application;
 
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.adroits.smartmedcare.utils.dagger.base.BaseApplication;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;

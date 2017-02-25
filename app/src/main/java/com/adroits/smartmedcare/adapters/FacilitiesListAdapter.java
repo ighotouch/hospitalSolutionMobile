@@ -27,10 +27,12 @@ public class FacilitiesListAdapter extends RecyclerView.Adapter<FacilitiesListAd
 
     // Define listener member variable
     private static OnItemClickListener listener;
+
     // Define the listener interface
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
     }
+
     // Define the method that allows the parent activity or fragment to define the listener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -43,7 +45,6 @@ public class FacilitiesListAdapter extends RecyclerView.Adapter<FacilitiesListAd
         public ImageView imageView;
         public ImageView subscriptionStatus;
         private Context context;
-
 
 
         public ViewHolder(Context context, final View itemView) {
@@ -79,7 +80,7 @@ public class FacilitiesListAdapter extends RecyclerView.Adapter<FacilitiesListAd
         View contactView = inflater.inflate(R.layout.courses_course_item, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(context,contactView);
+        ViewHolder viewHolder = new ViewHolder(context, contactView);
         return viewHolder;
     }
 
@@ -92,19 +93,19 @@ public class FacilitiesListAdapter extends RecyclerView.Adapter<FacilitiesListAd
         TextView textView = viewHolder.title;
         textView.setText(course.getTitle());
         final ImageView imageView = viewHolder.imageView;
-         ImageView subscriptionStatus = viewHolder.subscriptionStatus;
+        ImageView subscriptionStatus = viewHolder.subscriptionStatus;
         final Context context = viewHolder.context;
 
 
-        String uri = "@drawable/"+course.getThumbnail();  // where myresource (without the extension) is the file
+        String uri = "@drawable/" + course.getThumbnail();  // where myresource (without the extension) is the file
 
         int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
-
-        //Drawable res = context.getResources().getDrawable(imageResource);
-        //imageView.setImageDrawable(res);
-
-
-
+        try {
+            Drawable res = context.getResources().getDrawable(imageResource);
+            imageView.setImageDrawable(res);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         //Button button = viewHolder.messageButton;

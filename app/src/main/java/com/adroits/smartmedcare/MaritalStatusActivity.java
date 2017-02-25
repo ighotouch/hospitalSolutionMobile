@@ -62,6 +62,7 @@ public class MaritalStatusActivity extends AppCompatActivity {
 
     }
 
+
     public static class SectionFragment extends Fragment {
         private static final String TAG = "SectionFragment";
         private static MaritalStatusActivity context = null;
@@ -132,18 +133,10 @@ public class MaritalStatusActivity extends AppCompatActivity {
 
                     final List<InformationCentre> facilites = new ArrayList<>();
                     InformationCentre f1 = new InformationCentre("Safe Exercise","info");
-                    InformationCentre f2 = new InformationCentre("Safe Eating","info");
-                    InformationCentre f3 = new InformationCentre("Do's & Don'ts","info");
-                    InformationCentre f4 = new InformationCentre("Pre-Natal","info");
-                    InformationCentre f5 = new InformationCentre("Signs and Symptoms","info");
-                    InformationCentre f6 = new InformationCentre("Complaints","info");
+
 
                     facilites.add(f1);
-                    facilites.add(f2);
-                    facilites.add(f3);
-                    facilites.add(f4);
-                    facilites.add(f5);
-                    facilites.add(f6);
+
 
                     InformationPortalListAdapter adapter = new InformationPortalListAdapter(facilites);
                     rvContacts.setAdapter(adapter);
@@ -152,20 +145,16 @@ public class MaritalStatusActivity extends AppCompatActivity {
                     adapter.setOnItemClickListener(new InformationPortalListAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, int position) {
-//                        InformationCentre selected = facilites.get(position);
-//                            if(selected.getTitle().equals("Public Announcement")){
-//                                context.announcementIntro();
-//                            }else if(selected.getTitle().equals("Awards")){
-//                                context.eventsIntro();
-//                            }else if(selected.getTitle().equals("About The Ministry")){
-//                                context.eventsIntro();
-//                            }else if(selected.getTitle().equals("Ministry Offices")){
-//                                context.eventsIntro();
-//                            }else if(selected.getTitle().equals("Ministry Officials")){
-//                                context.officialsIntro();
-//                            }else {
-//                                context.eventsIntro();
-//                            }
+                            new MaterialDialog.Builder(context)
+                                    .title("Safe Exercise")
+                                    .content("Keep Moving\n" +
+                                            "Experts agree, when you're expecting, it's important to keep moving: Pregnant women who exercise have less back pain, more energy, a better body image and, post-delivery, a faster return to their pre-pregnancy shape.\n" +
+                                            "\n" +
+                                            "Being fit doesn't have to mean a big time commitment or fancy equipment. The following workout is simple, can be done at home, and is safe to do in each trimester.\n" +
+                                            "\n" +
+                                            "Be sure to do the moves in the order shown and, for best results, do the workout every other day. Always check with your doctor before starting this or any exercise program.")
+                                    .positiveText("Ok")
+                                    .show();
 
                         }
                     });
@@ -347,6 +336,28 @@ public class MaritalStatusActivity extends AppCompatActivity {
 
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (index == 1) {
+
+            ////goBack(0);
+        } else if (index == 0) {
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    finish();
+                }
+
+            }, 1000);
+
+            Intent intent = new Intent(MaritalStatusActivity.this, ConsoleActivity.class);
+            MaritalStatusActivity.this.startActivity(intent);
+        }
+
 
     }
 

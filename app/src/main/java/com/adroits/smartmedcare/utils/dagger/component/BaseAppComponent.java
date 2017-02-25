@@ -5,11 +5,15 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 
+import com.adroits.smartmedcare.ConsoleActivity;
 import com.adroits.smartmedcare.DetailActivity;
 import com.adroits.smartmedcare.HospitalLocator;
+import com.adroits.smartmedcare.InformationPortal;
 import com.adroits.smartmedcare.MainActivity;
 import com.adroits.smartmedcare.SplashActivity;
+import com.adroits.smartmedcare.TopicOfTheWeekActivity;
 import com.adroits.smartmedcare.adapters.CategotyListAdapter;
+import com.adroits.smartmedcare.utils.WebServiceRequestMaker;
 import com.adroits.smartmedcare.utils.dagger.module.BaseAppModule;
 import com.adroits.smartmedcare.utils.dagger.module.NetModule;
 import com.adroits.smartmedcare.adapters.CourseListRecycleViewAdapter;
@@ -30,6 +34,12 @@ public interface BaseAppComponent {
     void inject(SplashActivity splashActivity);
     void inject(HospitalLocator hospitalLocator);
     void inject(DetailActivity detailActivity);
+    void inject(InformationPortal informationPortal);
+    void inject(WebServiceRequestMaker webServiceRequestMaker);
+    void inject(InformationPortal.SectionFragment sectionFragment);
+    void inject(TopicOfTheWeekActivity topicOfTheWeekActivity);
+    void inject(TopicOfTheWeekActivity.SectionFragment sectionFragments);
+    void inject(ConsoleActivity consoleActivity);
     void inject(CategotyListAdapter categotyListAdapter);
     void inject(CourseListRecycleViewAdapter courseListRecycleViewAdapter);
 

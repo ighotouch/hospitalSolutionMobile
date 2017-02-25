@@ -1,5 +1,6 @@
 package com.adroits.smartmedcare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,9 +19,17 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Reg Payment");
 
 
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PaymentActivity.this, ConsoleActivity.class);
+        PaymentActivity.this.startActivity(intent);
+    }
 }

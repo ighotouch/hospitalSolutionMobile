@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_information_portal" />
+    <include layout="@layout/content_topic_of_the_week" />
 
 
 

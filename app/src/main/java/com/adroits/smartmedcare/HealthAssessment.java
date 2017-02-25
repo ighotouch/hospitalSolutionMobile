@@ -138,19 +138,19 @@ public class HealthAssessment extends AppCompatActivity {
 
                     final List<InformationCentre> facilites = new ArrayList<>();
                     InformationCentre f1 = new InformationCentre("Obesity","info");
-                    InformationCentre f2 = new InformationCentre("Mental Health","info");
-                    InformationCentre f3 = new InformationCentre("Smoking","info");
-                    InformationCentre f4 = new InformationCentre("Physical Activities","info");
-                    InformationCentre f5 = new InformationCentre("Heart Disease","info");
-                    InformationCentre f6 = new InformationCentre("Diabetes","info");
+//                    InformationCentre f2 = new InformationCentre("Mental Health","info");
+//                    InformationCentre f3 = new InformationCentre("Smoking","info");
+//                    InformationCentre f4 = new InformationCentre("Physical Activities","info");
+//                    InformationCentre f5 = new InformationCentre("Heart Disease","info");
+//                    InformationCentre f6 = new InformationCentre("Diabetes","info");
 
 
                     facilites.add(f1);
-                    facilites.add(f2);
-                    facilites.add(f3);
-                    facilites.add(f4);
-                    facilites.add(f5);
-                    facilites.add(f6);
+//                    facilites.add(f2);
+//                    facilites.add(f3);
+//                    facilites.add(f4);
+//                    facilites.add(f5);
+//                    facilites.add(f6);
 
 
                     InformationPortalListAdapter adapter = new InformationPortalListAdapter(facilites);
@@ -290,18 +290,18 @@ public class HealthAssessment extends AppCompatActivity {
 
                     facilites.add(f1);
 
-
-                    EventsAdapter adapter = new EventsAdapter(facilites);
-                    rvContacts.setAdapter(adapter);
-                    rvContacts.setLayoutManager(new LinearLayoutManager(context.getApplicationContext()));
-
-                    adapter.setOnItemClickListener(new EventsAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
 //
-
-                        }
-                    });
+//                    EventsAdapter adapter = new EventsAdapter(facilites);
+//                    rvContacts.setAdapter(adapter);
+//                    rvContacts.setLayoutManager(new LinearLayoutManager(context.getApplicationContext()));
+//
+//                    adapter.setOnItemClickListener(new EventsAdapter.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(View view, int position) {
+////
+//
+//                        }
+//                    });
 
                     return fragmentView;
                 }
@@ -321,17 +321,17 @@ public class HealthAssessment extends AppCompatActivity {
                     facilites.add(f1);
 
 
-                    EventsAdapter adapter = new EventsAdapter(facilites);
-                    rvContacts.setAdapter(adapter);
-                    rvContacts.setLayoutManager(new LinearLayoutManager(context.getApplicationContext()));
-
-                    adapter.setOnItemClickListener(new EventsAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
+//                    EventsAdapter adapter = new EventsAdapter(facilites);
+//                    rvContacts.setAdapter(adapter);
+//                    rvContacts.setLayoutManager(new LinearLayoutManager(context.getApplicationContext()));
 //
-
-                        }
-                    });
+//                    adapter.setOnItemClickListener(new EventsAdapter.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(View view, int position) {
+////
+//
+//                        }
+//                    });
 
                     return fragmentView;
                 }

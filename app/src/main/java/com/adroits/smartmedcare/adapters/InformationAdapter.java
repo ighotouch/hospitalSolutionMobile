@@ -1,7 +1,7 @@
 package com.adroits.smartmedcare.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.adroits.smartmedcare.R;
-import com.adroits.smartmedcare.dbmodels.InformationCentre;
+import com.adroits.smartmedcare.utils.rest.model.Information;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
 /**
  * Created by Matthew Igho on 6/20/2016.
  */
-public class InformationPortalListAdapter extends RecyclerView.Adapter<InformationPortalListAdapter.ViewHolder> {
-    private List<InformationCentre> courses;
+public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.ViewHolder> {
+    private List<Information> courses;
 
-    public InformationPortalListAdapter(List<InformationCentre> courses) {
+    public InformationAdapter(List<Information> courses) {
         this.courses = courses;
     }
 
@@ -40,7 +40,7 @@ public class InformationPortalListAdapter extends RecyclerView.Adapter<Informati
 
         public TextView title;
         public TextView description;
-        public ImageView imageView;
+        public SimpleDraweeView imageView;
         public ImageView subscriptionStatus;
         private Context context;
 
@@ -53,6 +53,7 @@ public class InformationPortalListAdapter extends RecyclerView.Adapter<Informati
 
             title = (TextView) itemView.findViewById(R.id.title);
             description = (TextView) itemView.findViewById(R.id.overview);
+            imageView = (SimpleDraweeView) itemView.findViewById(R.id.avatar);
             subscriptionStatus = (ImageView) itemView.findViewById(R.id.subscriptionStatus);
             this.context = context;
             // Attach a click listener to the entire row view
@@ -70,12 +71,12 @@ public class InformationPortalListAdapter extends RecyclerView.Adapter<Informati
     }
 
     @Override
-    public InformationPortalListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public InformationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.information_list_item, parent, false);
+        View contactView = inflater.inflate(R.layout.information_item, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(context,contactView);
@@ -83,25 +84,19 @@ public class InformationPortalListAdapter extends RecyclerView.Adapter<Informati
     }
 
     @Override
-    public void onBindViewHolder(InformationPortalListAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(InformationAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        InformationCentre course = courses.get(position);
+        Information course = courses.get(position);
 
         // Set item views based on the data model
         TextView textView = viewHolder.title;
-        textView.setText(course.getTitle());
-         ImageView subscriptionStatus = viewHolder.subscriptionStatus;
-        final Context context = viewHolder.context;
+        TextView description = viewHolder.description;
+        textView.setText(course.getHeader());
+        description.setText(course.getContent());
+        final SimpleDraweeView imageView = viewHolder.imageView;
 
-
-        String uri = "@drawable/"+course.getThumbnail();  // where myresource (without the extension) is the file
-
-        int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
-
-       // Drawable res = context.getResources().getDrawable(imageResource);
-        //imageView.setImageDrawable(res);
-
-
+        Uri uri = Uri.parse(course.getThumbnail());
+        imageView.setImageURI(uri);
 
 
 

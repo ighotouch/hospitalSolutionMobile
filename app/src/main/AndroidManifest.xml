@@ -3,6 +3,7 @@
     package="com.adroits.smartmedcare">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -17,8 +18,17 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".HospitalLocator" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".HospitalLocator"
+            android:label="@string/title_activity_course_catelog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".TopicOfTheWeekActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

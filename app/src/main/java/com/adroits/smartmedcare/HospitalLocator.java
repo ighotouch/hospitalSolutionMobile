@@ -49,9 +49,7 @@ public class HospitalLocator extends AppCompatActivity  {
 
     Facilities facilitiesClicked;
     TextView globalText;
-    String globalString = "Loading location..";
     private Handler handler = new Handler();
-    static String deviceLocation;
 
     @Inject
     SessionManager sessionManager;
@@ -68,11 +66,14 @@ public class HospitalLocator extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_locator);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         ElearnApplication.getComponent().inject(this);
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         startIntro();
     }
@@ -155,7 +156,7 @@ public class HospitalLocator extends AppCompatActivity  {
             switch (sectionNumber) {
                 case 0: {
                     context.index = 0;
-                    context.getSupportActionBar().setTitle("Facility Locator");
+                    context.getSupportActionBar().setTitle("Health Facilities");
                     View fragmentView = inflater.inflate(context.getResources().getLayout(R.layout.facility_locator), null);
                     //context.loadFacilitiesTitle(fragmentView, _backMode);
                     context.globalText = (TextView) fragmentView.findViewById(R.id.descLabel);
@@ -164,10 +165,10 @@ public class HospitalLocator extends AppCompatActivity  {
                     RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
                     final List<Facilities> facilites = new ArrayList<>();
-                    Facilities f1 = new Facilities("Government Hospitals", "hospital");
-                    Facilities f2 = new Facilities("Primary HealthCare Centre", "hospital");
-                    Facilities f4 = new Facilities("Private Hospitals", "hospital");
-                    Facilities f3 = new Facilities("Pharmaceutical Stores", "hospital");
+                    Facilities f1 = new Facilities("Government Hospitals", "general_hospital");
+                    Facilities f2 = new Facilities("Primary HealthCare Centre", "primary_health");
+                    Facilities f4 = new Facilities("Private Hospitals", "private_hospital");
+                    Facilities f3 = new Facilities("Pharmaceutical Stores", "pham");
 
                     facilites.add(f1);
                     facilites.add(f2);
@@ -204,8 +205,8 @@ public class HospitalLocator extends AppCompatActivity  {
                     RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
                     final List<Facilities> facilites = new ArrayList<>();
-                    Facilities f1 = new Facilities("Around my Location", "stores");
-                    Facilities f2 = new Facilities("Select Location", "hospital");
+                    Facilities f1 = new Facilities("Around my Location", "location");
+                    Facilities f2 = new Facilities("Select Location", "select_location");
 
 
                     facilites.add(f1);
@@ -336,13 +337,9 @@ public class HospitalLocator extends AppCompatActivity  {
                                                                                 context.startActivity(intent);
                                                                             }
                                                                         }
-
-
                                                                     }
                                                                 })
-
                                                                 .show();
-
                                                     } else {
                                                         new MaterialDialog.Builder(context)
                                                                 .title("General Hospitals in " + selectedLga)

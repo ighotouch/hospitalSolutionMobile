@@ -1,6 +1,9 @@
 package com.adroits.smartmedcare.utils.dagger.base;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.adroits.smartmedcare.utils.dagger.component.BaseAppComponent;
 import com.adroits.smartmedcare.utils.dagger.component.DaggerBaseAppComponent;
@@ -9,7 +12,7 @@ import com.adroits.smartmedcare.utils.dagger.module.NetModule;
 import com.adroits.smartmedcare.utils.rest.RestConstants;
 
 
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
 
     protected static BaseAppComponent component;
 
@@ -38,6 +41,11 @@ public class BaseApplication extends Application {
                     .netModule(new NetModule(RestConstants.BASE_URL))
                     .build();
         }
+    }
+
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
 }

@@ -15,6 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
         <ImageView
             android:layout_width="wrap_content"
@@ -22,8 +23,10 @@
             android:src="@drawable/paystack"
             android:layout_gravity="center_horizontal"/>
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="Fee: N1000"/>
 
         <LinearLayout

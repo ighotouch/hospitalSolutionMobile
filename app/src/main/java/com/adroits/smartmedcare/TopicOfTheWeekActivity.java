@@ -16,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import com.adroits.smartmedcare.adapters.EventsAdapter;
 import com.adroits.smartmedcare.adapters.FacilitiesListAdapter;
 import com.adroits.smartmedcare.adapters.InformationAdapter;
 import com.adroits.smartmedcare.adapters.InformationPortalListAdapter;
@@ -38,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class InformationPortal extends AppCompatActivity {
+public class TopicOfTheWeekActivity extends AppCompatActivity {
     int index = 0;
     private Handler handler = new Handler();
     @Inject
@@ -67,7 +65,7 @@ public class InformationPortal extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, SectionFragment.newInstance(0, InformationPortal.this, false))
+                .replace(R.id.fragmentContainer, SectionFragment.newInstance(2, TopicOfTheWeekActivity.this, false))
                 .commit();
 
     }
@@ -75,7 +73,7 @@ public class InformationPortal extends AppCompatActivity {
 
     public static class SectionFragment extends Fragment {
         private static final String TAG = "SectionFragment";
-        private static InformationPortal context = null;
+        private static TopicOfTheWeekActivity context = null;
 
         public static final String ARG_SECTION_NUMBER = "section_number";
         private int sectionNumber = 0;
@@ -125,7 +123,7 @@ public class InformationPortal extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static SectionFragment newInstance(int sectionNumber, InformationPortal activityContext, boolean backMode) {
+        public static SectionFragment newInstance(int sectionNumber, TopicOfTheWeekActivity activityContext, boolean backMode) {
             context = activityContext;
             //ElearnApplication.getComponent().inject(this);
             SectionFragment fragment = new SectionFragment();
@@ -147,7 +145,7 @@ public class InformationPortal extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             Log.d(SectionFragment.TAG, "onCreateView() called for sectionNumber " + sectionNumber);
             if (context == null) {
-                context = (InformationPortal) getActivity();
+                context = (TopicOfTheWeekActivity) getActivity();
             }
 
 
@@ -204,7 +202,7 @@ public class InformationPortal extends AppCompatActivity {
 
                 case 1: {
                     context.index = 1;
-                    context.getSupportActionBar().setTitle("Category");
+                    context.getSupportActionBar().setTitle("Topic of The Week");
                     View fragmentView = inflater.inflate(context.getResources().getLayout(R.layout.facility_locator), null);
                     RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
@@ -256,14 +254,14 @@ public class InformationPortal extends AppCompatActivity {
 
                 case 2: {
                     context.index = 1;
-                    context.getSupportActionBar().setTitle("Events");
+                    context.getSupportActionBar().setTitle("Topics of the Week");
                     View fragmentView = inflater.inflate(context.getResources().getLayout(R.layout.events), null);
                     final RecyclerView rvContacts = (RecyclerView) fragmentView.findViewById(R.id.list_items);
 
                     showDialog("Loading Events");
 
                     SmartMedCareService taskService = this.retrofit.create(SmartMedCareService.class);
-                    Call<List<Information>> call = taskService.getEvents();
+                    Call<List<Information>> call = taskService.getTopicOfTheWeek();
                     call.enqueue(new Callback<List<Information>>() {
                         @Override
                         public void onResponse(Call<List<Information>> call, Response<List<Information>> response) {
@@ -454,7 +452,7 @@ public class InformationPortal extends AppCompatActivity {
     public void eventsIntro() {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        SectionFragment fragment = SectionFragment.newInstance(2, InformationPortal.this, false);
+        SectionFragment fragment = SectionFragment.newInstance(2, TopicOfTheWeekActivity.this, false);
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.setCustomAnimations(R.anim.pull_in_from_right, R.anim.push_out_to_left);
@@ -465,7 +463,7 @@ public class InformationPortal extends AppCompatActivity {
     public void announcementIntro() {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        SectionFragment fragment = SectionFragment.newInstance(3, InformationPortal.this, false);
+        SectionFragment fragment = SectionFragment.newInstance(3, TopicOfTheWeekActivity.this, false);
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.setCustomAnimations(R.anim.pull_in_from_right, R.anim.push_out_to_left);
@@ -476,7 +474,7 @@ public class InformationPortal extends AppCompatActivity {
     public void officialsIntro() {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        SectionFragment fragment = SectionFragment.newInstance(4, InformationPortal.this, false);
+        SectionFragment fragment = SectionFragment.newInstance(4, TopicOfTheWeekActivity.this, false);
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.setCustomAnimations(R.anim.pull_in_from_right, R.anim.push_out_to_left);
@@ -486,10 +484,7 @@ public class InformationPortal extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (index == 1) {
 
-            goBack(0);
-        } else if (index == 0) {
             handler.postDelayed(new Runnable() {
 
                 @Override
@@ -499,9 +494,9 @@ public class InformationPortal extends AppCompatActivity {
 
             }, 1000);
 
-            Intent intent = new Intent(InformationPortal.this, ConsoleActivity.class);
-            InformationPortal.this.startActivity(intent);
-        }
+            Intent intent = new Intent(TopicOfTheWeekActivity.this, ConsoleActivity.class);
+            TopicOfTheWeekActivity.this.startActivity(intent);
+
 
 
     }
@@ -513,7 +508,7 @@ public class InformationPortal extends AppCompatActivity {
         ft.setCustomAnimations(R.anim.pull_in_from_left2, R.anim.push_out_to_right);
 
         int newViewIndex = viewToReturnTo;
-        SectionFragment section = SectionFragment.newInstance(viewToReturnTo, InformationPortal.this, true);
+        SectionFragment section = SectionFragment.newInstance(viewToReturnTo, TopicOfTheWeekActivity.this, true);
 
 
         ft.replace(R.id.fragmentContainer, section).commit();
